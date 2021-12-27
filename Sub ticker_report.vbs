@@ -25,11 +25,11 @@ Sub ticker_report()
         For i = 1 To last_row
                 If ws.Cells(i + 1, 1).Value <> ws.Cells(i, 1).Value Then
                     'Set the ticker-name
-                    ticker_name = ws.Cells(i + 1, 1).Value
+                    ticker_symbol = ws.Cells(i + 1, 1).Value
                     
                     'capturing year open and close
                     year_open = ws.Cells(i + 1, 3).Value
-                    ticker_rc_qty = WorksheetFunction.CountIf(ws.Range("A:A"), ticker_name)
+                    ticker_rc_qty = WorksheetFunction.CountIf(ws.Range("A:A"), ticker_symbol)
                     year_close = ws.Cells(i + ticker_rc_qty, 6).Value
                     
                     'calculating Yearly change
@@ -47,7 +47,7 @@ Sub ticker_report()
                     
                     'populating the summary table
                     'values
-                    ws.Cells(ticker_summary, 9).Value = ticker_name
+                    ws.Cells(ticker_summary, 9).Value = ticker_symbol
                     ws.Cells(ticker_summary, 10).Value = year_change
                     ws.Cells(ticker_summary, 11).Value = percent_change
                     ws.Cells(ticker_summary - 1, 12).Value = ticker_volume
@@ -81,7 +81,7 @@ Sub ticker_report()
             ws.Cells(last_entry, 10).Clear
             last_entry = ws.Cells(Rows.Count, 11).End(xlUp).Row
             ws.Cells(last_entry, 11).Clear
-            
+            ws.Columns("I:R").EntireColumn.AutoFit
         '----------------Bonus point--------------
         
         Dim Greatest_Increase As Double
