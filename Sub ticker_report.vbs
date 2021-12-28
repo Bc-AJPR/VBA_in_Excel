@@ -1,16 +1,16 @@
 Sub ticker_report()
   For Each ws In Worksheets
     
-        Dim last_row As Long
+        Dim last_row As Long 
         Dim ticker_symbol As String
         Dim year_open As Double
         Dim year_close As Double
         Dim year_change As Double
         Dim percent_change As Double
-        Dim next_ticker As Integer
         Dim ticker_summary As String
         Dim ticker_volume As Double
         Dim ticker_rc_qty As Double
+        Dim last_entry As Double
         
         'setting_resetting the variables
             ticker_volume = 0
@@ -87,6 +87,7 @@ Sub ticker_report()
         Dim Greatest_Increase As Double
         Dim Greatest_Decrease As Double
         Dim Greatest_Total_Volume As Double
+        Dim report_total As Double
         
         'setting the table's headers and labels
         ws.Cells(2, 16).Value = "Greatest % Increase"
